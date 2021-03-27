@@ -1,0 +1,41 @@
+.calendar-heatmap-container {
+  .week-label-container {
+    margin-top: 30px;
+    display: inline-block;
+    vertical-align: top;
+
+    .labels {
+      font-size: 20px;
+      line-height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .month-label-container {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .labels {
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
+
+  .heatmap-scroll {
+    white-space: nowrap;
+    display: inline-block;
+
+    .heatmap-week {
+      display: inline-block;
+    }
+
+    .heatmap-day {
+      background-clip: content-box;
+      outline: 1px solid rgba(27, 31, 25, 0.06);
+      outline-offset: -3px;
+    }
+  }
+}

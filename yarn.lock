@@ -1370,6 +1370,18 @@
   resolved "https://registry.npm.taobao.org/@types/archy/download/@types/archy-0.0.31.tgz#01650a4641e7e1d11dbd64eda42eec9a2f829c7f"
   integrity sha1-AWUKRkHn4dEdvWTtpC7smi+CnH8=
 
+"@types/d3-scale@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.npm.taobao.org/@types/d3-scale/download/@types/d3-scale-3.2.2.tgz#5e28d0b1c599328aaec6094219f10a2570be6d74"
+  integrity sha1-XijQscWZMoquxglCGfEKJXC+bXQ=
+  dependencies:
+    "@types/d3-time" "*"
+
+"@types/d3-time@*":
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/@types/d3-time/download/@types/d3-time-2.0.0.tgz#831dd093db91f16b83ba980e194bb8e4bcef44d6"
+  integrity sha1-gx3Qk9uR8WuDupgOGUu45LzvRNY=
+
 "@types/debug@^4.1.5":
   version "4.1.5"
   resolved "https://registry.npm.taobao.org/@types/debug/download/@types/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
@@ -3405,6 +3417,53 @@ cyclist@^1.0.1:
   resolved "https://registry.npm.taobao.org/cyclist/download/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+d3-array@^2.3.0:
+  version "2.12.1"
+  resolved "https://registry.npm.taobao.org/d3-array/download/d3-array-2.12.1.tgz?cache=0&sync_timestamp=1616605243260&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fd3-array%2Fdownload%2Fd3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
+  integrity sha1-4gtBqvzf/fXVCSgATs7PgVpGXoE=
+  dependencies:
+    internmap "^1.0.0"
+
+"d3-color@1 - 2":
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/d3-color/download/d3-color-2.0.0.tgz#8d625cab42ed9b8f601a1760a389f7ea9189d62e"
+  integrity sha1-jWJcq0Ltm49gGhdgo4n36pGJ1i4=
+
+"d3-format@1 - 2":
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/d3-format/download/d3-format-2.0.0.tgz#a10bcc0f986c372b729ba447382413aabf5b0767"
+  integrity sha1-oQvMD5hsNytym6RHOCQTqr9bB2c=
+
+"d3-interpolate@1.2.0 - 2":
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/d3-interpolate/download/d3-interpolate-2.0.1.tgz?cache=0&sync_timestamp=1598198120359&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fd3-interpolate%2Fdownload%2Fd3-interpolate-2.0.1.tgz#98be499cfb8a3b94d4ff616900501a64abc91163"
+  integrity sha1-mL5JnPuKO5TU/2FpAFAaZKvJEWM=
+  dependencies:
+    d3-color "1 - 2"
+
+d3-scale@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.npm.taobao.org/d3-scale/download/d3-scale-3.2.3.tgz#be380f57f1f61d4ff2e6cbb65a40593a51649cfd"
+  integrity sha1-vjgPV/H2HU/y5su2WkBZOlFknP0=
+  dependencies:
+    d3-array "^2.3.0"
+    d3-format "1 - 2"
+    d3-interpolate "1.2.0 - 2"
+    d3-time "1 - 2"
+    d3-time-format "2 - 3"
+
+"d3-time-format@2 - 3":
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/d3-time-format/download/d3-time-format-3.0.0.tgz#df8056c83659e01f20ac5da5fdeae7c08d5f1bb6"
+  integrity sha1-34BWyDZZ4B8grF2l/ernwI1fG7Y=
+  dependencies:
+    d3-time "1 - 2"
+
+"d3-time@1 - 2":
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/d3-time/download/d3-time-2.0.0.tgz?cache=0&sync_timestamp=1597323649083&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fd3-time%2Fdownload%2Fd3-time-2.0.0.tgz#ad7c127d17c67bd57a4c61f3eaecb81108b1e0ab"
+  integrity sha1-rXwSfRfGe9V6TGHz6uy4EQix4Ks=
+
 d@1, d@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/d/download/d-1.0.1.tgz#8698095372d58dbee346ffd0c7093f99f8f9eb5a"
@@ -3428,6 +3487,11 @@ data-urls@^1.1.0:
     abab "^2.0.0"
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
+
+dayjs@^1.10.4:
+  version "1.10.4"
+  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
+  integrity sha1-jlRKm4aD9heD9XCYCoqA6vVKseI=
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -5430,6 +5494,11 @@ internal-slot@^1.0.3:
     get-intrinsic "^1.1.0"
     has "^1.0.3"
     side-channel "^1.0.4"
+
+internmap@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/internmap/download/internmap-1.0.1.tgz#0017cc8a3b99605f0302f2b198d272e015e5df95"
+  integrity sha1-ABfMijuZYF8DAvKxmNJy4BXl35U=
 
 intersection-observer@^0.7.0:
   version "0.7.0"
