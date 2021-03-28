@@ -6,3 +6,6 @@ node_modules/
 .DS_Store
 lib
 types
+yarn.lock
+yarn-error.log
+package-lock.json

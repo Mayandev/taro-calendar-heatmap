@@ -1,6 +1,14 @@
 # Taro Calendar Heatmap
 
-基于 Taro 的日历热力图，类似以 GitHub Contribution 统计图。
+基于 Taro 的日历热力图，生成类似与 GitHub Contribution 统计图。
+
+## Todo
+
+- [ ] 展示 Tooltip
+- [ ] 点击回调以及样式
+- [ ] 适配 Dark Mode
+
+
 
 ## 安装与引入
 
