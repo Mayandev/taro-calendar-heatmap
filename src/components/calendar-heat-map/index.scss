@@ -1,4 +1,7 @@
 .calendar-heatmap-container {
+
+  position: relative;
+
   .week-label-container {
     margin-top: 30px;
     display: inline-block;
@@ -33,8 +36,12 @@
 
     .heatmap-day {
       background-clip: content-box;
-      outline: 1px solid rgba(27, 31, 25, 0.06);
+      outline: 1px solid rgba(27, 31, 25, .06);
       outline-offset: -3px;
+
+      &.deactive {
+        opacity: 0.5;
+      }
     }
   }
 }

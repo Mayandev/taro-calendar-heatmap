@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { ScrollView, View } from '@tarojs/components';
 import { scaleQuantize } from 'd3-scale';
+import cs from 'classnames';
+import { debounce } from 'lodash';
 import { num2IdxArray } from './utils';
 import { DAYS_IN_WEEK, DAY_LABELS, MONTH_LABELS, COLOR_THEME } from './const';
 import './index.scss';
 import * as isBetween from 'dayjs/plugin/isBetween';
 import * as weekday from 'dayjs/plugin/weekday';
 import 'dayjs/locale/zh-cn';
-import { useEffect, useState } from 'react';
 dayjs.extend(isBetween.default);
 dayjs.extend(weekday.default);
+
 type ICalendarHeatMapData = {
   date: Date;
   count: number;
@@ -29,6 +31,7 @@ type ICalendarHeatMap = {
   showWeekLabel?: boolean;
   showMonthLabel?: boolean;
   firstDay?: 'Mon' | 'Sun';
+  onClick?: (data: any) => void;
 };
 
 const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
@@ -43,8 +46,10 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
   showMonthLabel = false,
   theme = 'github',
   firstDay = 'Mon',
+  onClick,
 }) => {
   const [weeks, setWeeks] = useState<number>(0);
+  const [activeDayIndex, setActiceDayIndex] = useState<number | null>(null);
   useEffect(() => {
     firstDay === 'Mon' && dayjs.locale('zh-cn');
     const weeks = dayjs(endDate)
@@ -52,6 +57,20 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
       .diff(dayjs(startDate).weekday(0), 'weeks');
     setWeeks(weeks);
   }, [firstDay, startDate, endDate]);
+
+  const onDayClick = (dayIndex: number, data: ICalendarHeatMapData) => {
+    if (dayIndex === activeDayIndex) {
+      setActiceDayIndex(null);
+      return;
+    }
+    setActiceDayIndex(dayIndex);
+    onClick && onClick(data);
+  };
+
+  const onMapScroll = () => {
+    // reset color
+    setActiceDayIndex(null);
+  };
 
   const generateScaleColors = () => {
     const colors = colorRange ?? COLOR_THEME[theme];
@@ -130,25 +149,25 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
     dayIndex: number,
     dateMap: { [key: string]: ICalendarHeatMapData },
   ) => {
-    const scaleColor = generateScaleColors();
-
+    const scaleColor = generateScaleColors()(dateMap[dayIndex]?.count || 0);
     return (
       <View
+        key={dayIndex}
+        onClick={() => {
+          onDayClick(dayIndex, dateMap[dayIndex]);
+        }}
+        className={cs('heatmap-day', {
+          deactive: dayIndex !== activeDayIndex && activeDayIndex !== null,
+        })}
         style={{
-          padding: `${spacing}px`,
-        }}>
-        <View
-          className="heatmap-day"
-          key={dayIndex}
-          style={{
-            height: squareWidth,
-            width: squareWidth,
-            background: scaleColor(dateMap[dayIndex]?.count || 0),
-            backgroundClip: 'content-box',
-            borderRadius: `${radius}px`,
-          }}
-        />
-      </View>
+          height: squareWidth,
+          width: squareWidth,
+          background: scaleColor,
+          backgroundClip: 'content-box',
+          borderRadius: `${radius}px`,
+          margin: `${spacing}px`,
+        }}
+      />
     );
   };
 
@@ -159,6 +178,11 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
         scrollX
         scrollWithAnimation
         scrollAnchoring
+        scrollLeft={1000}
+        onScroll={debounce(onMapScroll, 300, {
+          leading: true,
+          trailing: false,
+        })}
         className="heatmap-scroll"
         style={{
           width: showWeekLabel
@@ -171,4 +195,4 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
     </View>
   );
 };
-export default CalendarHeatMap;
+export default memo(CalendarHeatMap);

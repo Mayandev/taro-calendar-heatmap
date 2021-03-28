@@ -32,10 +32,9 @@ export default class Index extends Component {
         <CalendarHeatMap
           data={this.generateRandomData()}
           showMonthLabel
-          showWeekLabel
           theme="github"
         />
-        <View>酱紫</View>
+        {/* <View>酱紫</View>
         <CalendarHeatMap
           data={this.generateRandomData()}
           showMonthLabel
@@ -62,7 +61,7 @@ export default class Index extends Component {
           showMonthLabel
           showWeekLabel
           theme="orange"
-        />
+        /> */}
       </View>
     );
   }
