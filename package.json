@@ -1,7 +1,6 @@
 {
   "name": "taro-calendar-heatmap",
   "version": "0.1.0",
-  "private": true,
   "description": "A calendar heatmap component build by taro.",
   "author": "<phillzou@gmail.com>",
   "keywords": [
