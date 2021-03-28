@@ -33,20 +33,19 @@ const data = [
 
 ## API
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- | --- |
-| spacing | 方块的间隙 | number | 1 |
-| squareWidth | 方块的宽度 | number | 14 |
-| radius | 方块的弧度 | number | 3 |
-| colorRange | 颜色范围，第一个颜色值为方块未填充的颜色 | string[] | [] |
-| theme | 日历主题 | github \| purple \| volcano \| blue \| orange | `github` |
-| startDate | 开始时间，可以传时间字符串、Date、时间戳 | string \| Date \| number | One year ago |
-| endDate | 结束时间，可以传时间字符串、Date、时间戳 | string \| Date \| number | Today |
-| showWeekLabel | 是否显示周标签 | boolean | false |
-| showMonthLabel | 是否显示月份标签 | boolean | false |
-| firstDay | 每周的第一天 | `Mon` | `Sun` | `Mon` |
-| data | 日历数据 | DataProp[] | [] |
-
+| 参数           | 说明                                     | 类型                                              | 默认值       |
+| -------------- | ---------------------------------------- | ------------------------------------------------- | ------------ |
+| spacing        | 方块的间隙                               | number                                            | 1            |
+| squareWidth    | 方块的宽度                               | number                                            | 14           |
+| radius         | 方块的弧度                               | number                                            | 3            |
+| colorRange     | 颜色范围，第一个颜色值为方块未填充的颜色 | string[]                                          | []           |
+| theme          | 日历主题                                 | github \| purple \| volcano \| blue \| orange | `github`     |
+| startDate      | 开始时间，可以传时间字符串、Date、时间戳 | string \| Date \| number                          | One year ago |
+| endDate        | 结束时间，可以传时间字符串、Date、时间戳 | string \| Date \| number                          | Today        |
+| showWeekLabel  | 是否显示周标签                           | boolean                                           | false        |
+| showMonthLabel | 是否显示月份标签                         | boolean                                           | false        |
+| firstDay       | 每周的第一天                             | `Mon` | `Sun`                                     | `Mon`        |
+| data           | 日历数据                                 | DataProp[]                                        | []           |
 ### DataProp
 
 | 参数  | 说明                           | 类型                     | 默认值 |
