@@ -1,3 +1,4 @@
+import React from 'react';
 import dayjs from 'dayjs';
 import { ScrollView, View } from '@tarojs/components';
 import { scaleQuantize } from 'd3-scale';
@@ -6,11 +7,10 @@ import { DAYS_IN_WEEK, DAY_LABELS, MONTH_LABELS, COLOR_THEME } from './const';
 import './index.scss';
 import * as isBetween from 'dayjs/plugin/isBetween';
 import * as weekday from 'dayjs/plugin/weekday';
-// import 'dayjs/locale/zh-cn';
+import 'dayjs/locale/zh-cn';
+import { useEffect, useState } from 'react';
 dayjs.extend(isBetween);
 dayjs.extend(weekday);
-// dayjs.locale('zh-cn');
-
 type ICalendarHeatMapData = {
   date: Date;
   count: number;
@@ -28,6 +28,7 @@ type ICalendarHeatMap = {
   endDate?: string | Date | number;
   showWeekLabel?: boolean;
   showMonthLabel?: boolean;
+  firstDay?: 'Mon' | 'Sun';
 };
 
 const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
@@ -41,10 +42,16 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
   showWeekLabel = false,
   showMonthLabel = false,
   theme = 'github',
+  firstDay = 'Mon',
 }) => {
-  const weeks = dayjs(endDate)
-    .weekday(7)
-    .diff(dayjs(startDate).weekday(0), 'weeks');
+  const [weeks, setWeeks] = useState<number>(0);
+  useEffect(() => {
+    firstDay === 'Mon' && dayjs.locale('zh-cn');
+    const weeks = dayjs(endDate)
+      .weekday(7)
+      .diff(dayjs(startDate).weekday(0), 'weeks');
+    setWeeks(weeks);
+  }, [firstDay, startDate, endDate]);
 
   const generateScaleColors = () => {
     const colors = colorRange ?? COLOR_THEME[theme];
@@ -73,6 +80,7 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
 
   const renderMonthLabels = () => {
     const firstDay = dayjs(startDate).weekday(0);
+
     const styles = {
       height: squareWidth,
       minWidth: squareWidth,
@@ -89,7 +97,7 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
               {MONTH_LABELS[month]}
             </View>
           ) : (
-            <View style={styles} />
+            <View className="labels" style={styles} />
           );
         })}
       </View>

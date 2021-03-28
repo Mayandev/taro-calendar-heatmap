@@ -1,0 +1,12 @@
+deploy_versions/
+.temp/
+.rn_temp/
+node_modules/
+.DS_Store
+./src/pages
+src
+.editorconfig
+.eslintrc
+tsconfig.json
+yarn.lock
+package-lock.json
