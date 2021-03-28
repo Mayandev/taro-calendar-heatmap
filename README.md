@@ -34,12 +34,12 @@ const data = [
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | spacing | 方块的间隙 | number | 1 |
 | squareWidth | 方块的宽度 | number | 14 |
 | radius | 方块的弧度 | number | 3 |
-| colorRange | 颜色范围，第一个颜色值为方块无填充时的颜色 | string[] | [] |
-| theme | 日历主题，如果设置 `colorRange`，则此字段不生效 | `github` | `purple` | `volcano` | `blue` | `orange` |
+| colorRange | 颜色范围，第一个颜色值为方块未填充的颜色 | string[] | [] |
+| theme | 日历主题 | `github` | `purple` | `volcano` | `blue` | `orange` | `github` |
 | startDate | 开始时间，可以传时间字符串、Date、时间戳 | string \| Date \| number | One year ago |
 | endDate | 结束时间，可以传时间字符串、Date、时间戳 | string \| Date \| number | Today |
 | showWeekLabel | 是否显示周标签 | boolean | false |
