@@ -30,6 +30,7 @@
     "css": "sass"
   },
   "scripts": {
+    "prepublish": "npm run build",
     "format": "prettier --write '**/*.{json,scss,ts,tsx,js}'",
     "pretty-quick": "pretty-quick --staged",
     "prepare": "husky install",
