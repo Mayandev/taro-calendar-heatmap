@@ -9,8 +9,8 @@ import * as isBetween from 'dayjs/plugin/isBetween';
 import * as weekday from 'dayjs/plugin/weekday';
 import 'dayjs/locale/zh-cn';
 import { useEffect, useState } from 'react';
-dayjs.extend(isBetween);
-dayjs.extend(weekday);
+dayjs.extend(isBetween.default);
+dayjs.extend(weekday.default);
 type ICalendarHeatMapData = {
   date: Date;
   count: number;

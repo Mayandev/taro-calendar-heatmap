@@ -15,7 +15,8 @@
     "resolveJsonModule": true,
     "target": "es2017",
     "module": "es6",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "esModuleInterop": true
   },
   "compileOnSave": false,
   "exclude": ["node_modules/*", "dist/*"],

@@ -1,6 +1,6 @@
 # Taro Calendar Heatmap
 
-基于 Taro 的日历热力图，生成类似与 GitHub Contribution 统计图。
+基于 Taro 的日历热力图，生成类似于 GitHub Contribution 统计图。
 
 ## Todo
 
@@ -23,7 +23,7 @@ npm i taro-calendar-heatmap --save
 ```js
 import CalendarHeatmap from 'taro-calendar-heatmap';
 // 引入样式
-import 'taro-calendar-heatmap/index.css';
+import 'taro-calendar-heatmap/dist/index.css';
 ```
 
 ## 组件使用
@@ -54,6 +54,8 @@ const data = [
 | showMonthLabel | 是否显示月份标签                         | boolean                                           | false        |
 | firstDay       | 每周的第一天                             | `Mon` | `Sun`                                     | `Mon`        |
 | data           | 日历数据                                 | DataProp[]                                        | []           |
+
+
 ### DataProp
 
 | 参数  | 说明                           | 类型                     | 默认值 |
