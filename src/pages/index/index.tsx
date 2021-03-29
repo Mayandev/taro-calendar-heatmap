@@ -25,6 +25,10 @@ export default class Index extends Component {
       count: Math.floor(Math.random() * 10),
     }));
 
+  onClick = (e) => {
+    console.log(e);
+  }
+
   render() {
     return (
       <View className="index">
@@ -33,6 +37,7 @@ export default class Index extends Component {
           data={this.generateRandomData()}
           showMonthLabel
           theme="github"
+          onClick={this.onClick}
         />
         {/* <View>酱紫</View>
         <CalendarHeatMap

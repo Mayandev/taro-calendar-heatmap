@@ -54,7 +54,7 @@ const data = [
 | showMonthLabel | 是否显示月份标签                         | boolean                                           | false        |
 | firstDay       | 每周的第一天                             | `Mon` | `Sun`                                     | `Mon`        |
 | data           | 日历数据                                 | DataProp[]                                        | []           |
-
+| onClick           | 点击回调，可以在回调中获取当天的数据                                 | Function                                        |  `(data: DataProp) => {}`         |
 
 ### DataProp
 

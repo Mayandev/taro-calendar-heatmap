@@ -14,7 +14,7 @@ dayjs.extend(isBetween.default);
 dayjs.extend(weekday.default);
 
 type ICalendarHeatMapData = {
-  date: Date;
+  date: Date | string | number;
   count: number;
 };
 
@@ -25,7 +25,7 @@ type ICalendarHeatMap = {
   unfilledColor?: string;
   colorRange?: string[];
   theme?: 'github' | 'purple' | 'volcano' | 'blue' | 'orange';
-  data: ICalendarHeatMapData[];
+  data?: ICalendarHeatMapData[];
   startDate?: string | Date | number;
   endDate?: string | Date | number;
   showWeekLabel?: boolean;
