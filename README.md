@@ -52,7 +52,7 @@ const data = [
 | endDate        | 结束时间，可以传时间字符串、Date、时间戳 | string \| Date \| number                          | Today        |
 | showWeekLabel  | 是否显示周标签                           | boolean                                           | false        |
 | showMonthLabel | 是否显示月份标签                         | boolean                                           | false        |
-| firstDay       | 每周的第一天                             | `Mon` | `Sun`                                     | `Mon`        |
+| firstDay       | 每周的第一天                             | `Mon` \| `Sun`                                     | `Mon`        |
 | data           | 日历数据                                 | DataProp[]                                        | []           |
 | onClick           | 点击回调，可以在回调可以获取点击的日期时间                                 | Function                                        |  `(date: Date ) => {}`         |
 | showTooltip           | 点击是否显示提示                     | boolean                                        |  false        |
