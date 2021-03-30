@@ -1,6 +1,6 @@
 {
   "name": "taro-calendar-heatmap",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A calendar heatmap component build by taro.",
   "author": "<phillzou@gmail.com>",
   "keywords": [
@@ -30,7 +30,8 @@
     "css": "sass"
   },
   "scripts": {
-    "prepublish": "npm run build",
+    "clean": "rm -rf dist/ types/ lib/",
+    "prepublish": "npm run clean && npm run build",
     "format": "prettier --write '**/*.{json,scss,ts,tsx,js}'",
     "pretty-quick": "pretty-quick --staged",
     "prepare": "husky install",
