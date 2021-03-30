@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { ITouchEvent, ScrollView, View } from '@tarojs/components';
 import { scaleQuantize } from 'd3-scale';
 import cs from 'classnames';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { num2IdxArray } from './utils';
 import { DAYS_IN_WEEK, DAY_LABELS, MONTH_LABELS, COLOR_THEME } from './const';
 import './index.scss';
