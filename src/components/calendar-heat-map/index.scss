@@ -1,6 +1,38 @@
-.calendar-heatmap-container {
+$tooltip-background: rgba(
+  $color: #000000,
+  $alpha: 0.7,
+);
 
-  position: relative;
+.calendar-heatmap-container {
+  .tooltip-container {
+    position: absolute;
+    z-index: 1;
+    transform: translate(-50%, -100%);
+
+    &.hidden {
+      display: none;
+    }
+
+    .tooltip {
+      font-size: 28px;
+      position: relative;
+      background-color: $tooltip-background;
+      padding: 10px 16px;
+      color: #ffffff;
+      border-radius: 10px;
+    }
+
+    .tooltip::before {
+      content: ' ';
+      border-left: 10px solid transparent;
+      border-top: 10px solid $tooltip-background;
+      border-right: 10px solid transparent;
+      border-bottom: 0px solid $tooltip-background;
+      position: absolute;
+      right: 50%;
+      bottom: -10px;
+    }
+  }
 
   .week-label-container {
     margin-top: 30px;
@@ -36,7 +68,7 @@
 
     .heatmap-day {
       background-clip: content-box;
-      outline: 1px solid rgba(27, 31, 25, .06);
+      outline: 1px solid rgba(27, 31, 25, 0.06);
       outline-offset: -3px;
 
       &.deactive {

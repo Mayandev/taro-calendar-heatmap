@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, ReactElement, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { ScrollView, View } from '@tarojs/components';
+import { ITouchEvent, ScrollView, View } from '@tarojs/components';
 import { scaleQuantize } from 'd3-scale';
 import cs from 'classnames';
 import { debounce } from 'lodash';
@@ -12,6 +12,11 @@ import * as weekday from 'dayjs/plugin/weekday';
 import 'dayjs/locale/zh-cn';
 dayjs.extend(isBetween.default);
 dayjs.extend(weekday.default);
+
+type IPosition = {
+  x: number;
+  y: number;
+};
 
 type ICalendarHeatMapData = {
   date: Date | string | number;
@@ -31,7 +36,9 @@ type ICalendarHeatMap = {
   showWeekLabel?: boolean;
   showMonthLabel?: boolean;
   firstDay?: 'Mon' | 'Sun';
-  onClick?: (data: any) => void;
+  showTooltip?: boolean;
+  tooltipContent?: string | ReactElement;
+  onClick?: (date: Date) => void;
 };
 
 const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
@@ -46,10 +53,17 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
   showMonthLabel = false,
   theme = 'github',
   firstDay = 'Mon',
+  showTooltip = true,
+  tooltipContent,
   onClick,
 }) => {
   const [weeks, setWeeks] = useState<number>(0);
   const [activeDayIndex, setActiceDayIndex] = useState<number | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<IPosition | null>(
+    null,
+  );
+  const [tooltipDisplay, setTooltipDisplay] = useState<boolean>(false);
+
   useEffect(() => {
     firstDay === 'Mon' && dayjs.locale('zh-cn');
     const weeks = dayjs(endDate)
@@ -58,16 +72,24 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
     setWeeks(weeks);
   }, [firstDay, startDate, endDate]);
 
-  const onDayClick = (dayIndex: number, data: ICalendarHeatMapData) => {
+  const onDayClick = (e: ITouchEvent, dayIndex: number) => {
+    console.log(e);
+
+    // show tooltip
+    setTooltipDisplay(true);
+    setTooltipPosition(e.detail);
     if (dayIndex === activeDayIndex) {
       setActiceDayIndex(null);
       return;
     }
+    const activeDate = dayjs(startDate).add(dayIndex, 'day').toDate();
     setActiceDayIndex(dayIndex);
-    onClick && onClick(data);
+    onClick && onClick(activeDate);
   };
 
   const onMapScroll = () => {
+    // hide tooltip
+    setTooltipDisplay(false);
     // reset color
     setActiceDayIndex(null);
   };
@@ -153,8 +175,8 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
     return (
       <View
         key={dayIndex}
-        onClick={() => {
-          onDayClick(dayIndex, dateMap[dayIndex]);
+        onClick={(e: ITouchEvent) => {
+          onDayClick(e, dayIndex);
         }}
         className={cs('heatmap-day', {
           deactive: dayIndex !== activeDayIndex && activeDayIndex !== null,
@@ -171,8 +193,25 @@ const CalendarHeatMap: React.FC<ICalendarHeatMap> = ({
     );
   };
 
+  const renderTooltip = () => {
+    const currentDate = dayjs(startDate)
+      .add(activeDayIndex || 0, 'day')
+      .format('YYYY-MM-DD');
+    return (
+      <View
+        className={cs('tooltip-container', { hidden: !tooltipDisplay })}
+        style={{
+          left: tooltipPosition?.x,
+          top: (tooltipPosition?.y || 0) - squareWidth,
+        }}>
+        <View className="tooltip">{tooltipContent ?? currentDate}</View>
+      </View>
+    );
+  };
+
   return (
     <View className="calendar-heatmap-container">
+      {showTooltip && renderTooltip()}
       {showWeekLabel && renderWeekLabels()}
       <ScrollView
         scrollX

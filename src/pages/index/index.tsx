@@ -27,8 +27,7 @@ export default class Index extends Component {
 
   onClick = (e) => {
     console.log(e);
-  }
-
+  };
   render() {
     return (
       <View className="index">
@@ -38,8 +37,9 @@ export default class Index extends Component {
           showMonthLabel
           theme="github"
           onClick={this.onClick}
+          tooltipContent={<View>aaaa</View>}
         />
-        {/* <View>酱紫</View>
+        <View>酱紫</View>
         <CalendarHeatMap
           data={this.generateRandomData()}
           showMonthLabel
@@ -66,7 +66,7 @@ export default class Index extends Component {
           showMonthLabel
           showWeekLabel
           theme="orange"
-        /> */}
+        />
       </View>
     );
   }

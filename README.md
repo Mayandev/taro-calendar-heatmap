@@ -54,7 +54,9 @@ const data = [
 | showMonthLabel | 是否显示月份标签                         | boolean                                           | false        |
 | firstDay       | 每周的第一天                             | `Mon` | `Sun`                                     | `Mon`        |
 | data           | 日历数据                                 | DataProp[]                                        | []           |
-| onClick           | 点击回调，可以在回调中获取当天的数据                                 | Function                                        |  `(data: DataProp) => {}`         |
+| onClick           | 点击回调，可以在回调可以获取点击的日期时间                                 | Function                                        |  `(date: Date ) => {}`         |
+| showTooltip           | 点击是否显示提示                     | boolean                                        |  false        |
+| tooltipContent           | 提示框内容，可以穿字符串或者组件。                     | string | Element                                        | 日期        |
 
 ### DataProp
 
